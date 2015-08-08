@@ -1,0 +1,63 @@
+{
+  "name": "clix-logger",
+  "version": "0.1.0",
+  "description": "Another console log wrapper with colored support and icons",
+  "main": "index.js",
+  "scripts": {
+    "beautify": "esbeautifier index.js 'src/**/*.js' 'lib/**/*.js' 'specs/**/*.js'",
+    "beautify-check": "esbeautifier -k index.js 'src/**/*.js' 'lib/**/*.js' 'specs/**/*.js'",
+    "eslint": "eslinter index.js 'src/**/*.js' 'lib/**/*.js' 'specs/**/*.js'",
+    "test": "mocha-runner 'specs/**/*.js'",
+    "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
+    "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
+    "lint": "npm run beautify && npm run eslint && npm test",
+    "check": "npm run beautify-check && npm run eslint && npm test",
+    "changelog": "changelogx -f markdown -o ./changelog.md",
+    "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog' --no-verify",
+    "install-hooks": "prepush install && changelogx install-hook && precommit install",
+    "pre-v": "npm run check",
+    "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
+    "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
+    "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
+    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/royriojas/clix-logger"
+  },
+  "license": "MIT",
+  "author": "Roy Riojas (http://royriojas.com)",
+  "prepush": [
+    "npm run check"
+  ],
+  "precommit": [
+    "npm run check"
+  ],
+  "devDependencies": {
+    "changelogx": "^1.0.16",
+    "esbeautifier": "^4.2.0",
+    "eslinter": "^2.1.0",
+    "istanbul": "^0.3.17",
+    "mocha-runner": "^1.0.8",
+    "precommit": "^1.1.0",
+    "prepush": "^3.1.2",
+    "proxyquire": "^1.6.0",
+    "watch-spawn": "^1.0.4"
+  },
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "extend": "^3.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/royriojas/clix-logger/issues"
+  },
+  "homepage": "https://github.com/royriojas/clix-logger",
+  "keywords": [
+    "console",
+    "logger",
+    "simple logger",
+    "loggy",
+    "colored output",
+    "color console"
+  ]
+}
