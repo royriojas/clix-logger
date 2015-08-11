@@ -12,36 +12,34 @@ module.exports = function ( options ) {
   };
 
   var opts = extend( {
-    showDate: true,
-    dateFormat: 'HH:mm:ss',
     coloredOutput: false,
     methods: {
       ok: {
-        //key: 'ok',
         muteable: false,
-        color: 'yellow',
-        token: ' ✔ ︎'
+        color: 'cyan',
+        token: ' ❖ '
       },
       subtle: {
-        //key: 'subtle',
         muteable: true,
         color: 'gray',
         token: ' ▸ '
       },
       error: {
-        //key: 'error',
         muteable: false,
         color: 'red',
         token: ' ✘ '
       },
       log: {
-        //key: 'log',
         muteable: true,
         color: 'white',
         token: ' ℹ︎ '
       },
+      warn: {
+        muteable: false,
+        color: 'yellow',
+        token: ' ⚠︎ '
+      },
       print: {
-        //key: 'print',
         muteable: false,
         color: 'gray',
         token: null
@@ -71,7 +69,7 @@ module.exports = function ( options ) {
       args = args.map( function ( arg ) {
         return opts.coloredOutput ? chalk[ entry.color ]( inspect( arg ) ) : inspect( arg );
       } );
-
+      //var logFn = 'log';
       var logFn = (key !== 'error') ? 'log' : 'error';
 
       console[ logFn ].apply( console, args );

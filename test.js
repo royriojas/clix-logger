@@ -1,5 +1,4 @@
-var l = require( './index' )( { coloredOutput: true } );
-
+var l = require( './logger' );
 l.ok( 'a', 'simple', 'message', 'of', 'type', 'ok', {
   coloredOutput: false
 }, [ 1, 2, 3 ] );
@@ -21,5 +20,9 @@ l.print( 'a', 'simple', 'message', 'of', 'type', 'print', {
 }, [ 1, 2, 3 ] );
 
 l.success( 'a', 'simple', 'message', 'of', 'type', 'success', {
+  coloredOutput: false
+}, [ 1, 2, 3 ] );
+
+l.warn( 'a', 'simple', 'message', 'of', 'type', 'error', {
   coloredOutput: false
 }, [ 1, 2, 3 ] );

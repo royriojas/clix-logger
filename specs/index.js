@@ -41,8 +41,11 @@ describe( 'clix-logger', function () {
       coloredOutput: false
     }, [ 1, 2, 3 ] );
 
-    //require('fs').writeFileSync('specs/fixtures/complex-objects.txt', lines.join('\n'));
-    var expected = require( 'fs' ).readFileSync( 'specs/fixtures/complex-objects.txt', {
+    l.warn( 'a', 'simple', 'message', 'of', 'type', 'warn', {
+      coloredOutput: false
+    }, [ 1, 2, 3 ] );
+
+    var expected = require( 'fs' ).readFileSync( './specs/fixtures/complex-objects.txt', {
       encoding: 'utf8'
     } );
 
@@ -73,14 +76,16 @@ describe( 'clix-logger', function () {
     l.error( 'a', 'simple', 'message', 'of', 'type', 'error' );
     l.print( 'a', 'simple', 'message', 'of', 'type', 'print' );
     l.success( 'a', 'simple', 'message', 'of', 'type', 'success' );
+    l.warn( 'a', 'simple', 'message', 'of', 'type', 'warn' );
 
     var expected = [
-      ' ✔ ︎ a simple message of type ok',
+      ' ❖  a simple message of type ok',
       ' ▸  a simple message of type subtle',
       ' ℹ︎  a simple message of type log',
       ' ✘  a simple message of type error',
       'a simple message of type print',
-      ' ✔ ︎ a simple message of type success'
+      ' ✔ ︎ a simple message of type success',
+      ' ⚠︎  a simple message of type warn'
     ];
 
     expect( lines.join( '\n' ) ).to.equal( expected.join( '\n' ) );
@@ -110,12 +115,14 @@ describe( 'clix-logger', function () {
     l.error( 'a', 'simple', 'message', 'of', 'type', 'error' );
     l.print( 'a', 'simple', 'message', 'of', 'type', 'print' );
     l.success( 'a', 'simple', 'message', 'of', 'type', 'success' );
+    l.warn( 'a', 'simple', 'message', 'of', 'type', 'warn' );
 
     var expected = [
-      ' ✔ ︎ a simple message of type ok',
+      ' ❖  a simple message of type ok',
       ' ✘  a simple message of type error',
       'a simple message of type print',
-      ' ✔ ︎ a simple message of type success'
+      ' ✔ ︎ a simple message of type success',
+      ' ⚠︎  a simple message of type warn'
     ];
 
     expect( lines.join( '\n' ) ).to.equal( expected.join( '\n' ) );
@@ -145,8 +152,10 @@ describe( 'clix-logger', function () {
     l.error( 'a', 'simple', 'message', 'of', 'type', 'error' );
     l.print( 'a', 'simple', 'message', 'of', 'type', 'print' );
     l.success( 'a', 'simple', 'message', 'of', 'type', 'success' );
+    l.warn( 'a', 'simple', 'message', 'of', 'type', 'warn' );
 
-    var expected = require( 'fs' ).readFileSync( 'specs/fixtures/colored-output.txt', {
+    //require('fs').writeFileSync('./specs/fixtures/colored-output.txt', lines.join('\n'));
+    var expected = require( 'fs' ).readFileSync( './specs/fixtures/colored-output.txt', {
       encoding: 'utf8'
     } );
 

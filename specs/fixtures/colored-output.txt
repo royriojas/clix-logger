@@ -1,6 +1,7 @@
-[33m ✔ ︎[39m [33ma[39m [33msimple[39m [33mmessage[39m [33mof[39m [33mtype[39m [33mok[39m
+[36m ❖ [39m [36ma[39m [36msimple[39m [36mmessage[39m [36mof[39m [36mtype[39m [36mok[39m
 [90m ▸ [39m [90ma[39m [90msimple[39m [90mmessage[39m [90mof[39m [90mtype[39m [90msubtle[39m
 [37m ℹ︎ [39m [37ma[39m [37msimple[39m [37mmessage[39m [37mof[39m [37mtype[39m [37mlog[39m
 [31m ✘ [39m [31ma[39m [31msimple[39m [31mmessage[39m [31mof[39m [31mtype[39m [31merror[39m
 [90ma[39m [90msimple[39m [90mmessage[39m [90mof[39m [90mtype[39m [90mprint[39m
 [32m ✔ ︎[39m [32ma[39m [32msimple[39m [32mmessage[39m [32mof[39m [32mtype[39m [32msuccess[39m
+[33m ⚠︎ [39m [33ma[39m [33msimple[39m [33mmessage[39m [33mof[39m [33mtype[39m [33mwarn[39m
