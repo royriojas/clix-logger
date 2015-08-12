@@ -16,8 +16,8 @@ module.exports = function ( options ) {
     methods: {
       ok: {
         muteable: false,
-        color: 'cyan',
-        token: ' ❖ '
+        color: 'yellow',
+        token: ' ✔ ︎'
       },
       subtle: {
         muteable: true,
@@ -36,7 +36,7 @@ module.exports = function ( options ) {
       },
       warn: {
         muteable: false,
-        color: 'yellow',
+        color: 'magenta',
         token: ' ⚠︎ '
       },
       print: {
@@ -47,7 +47,7 @@ module.exports = function ( options ) {
       success: {
         muteable: false,
         color: 'green',
-        token: ' ✔ ︎'
+        token: ' ✓ ︎'
       }
     }
   }, options );

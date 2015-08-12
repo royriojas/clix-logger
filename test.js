@@ -23,6 +23,6 @@ l.success( 'a', 'simple', 'message', 'of', 'type', 'success', {
   coloredOutput: false
 }, [ 1, 2, 3 ] );
 
-l.warn( 'a', 'simple', 'message', 'of', 'type', 'error', {
+l.warn( 'a', 'simple', 'message', 'of', 'type', 'warn', {
   coloredOutput: false
 }, [ 1, 2, 3 ] );
