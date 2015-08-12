@@ -1,5 +1,10 @@
 
 # clix-logger - Changelog
+## v0.1.3
+- **Refactoring**
+  - more meaningful colors - [60c5ed2]( https://github.com/royriojas/clix-logger/commit/60c5ed2 ), [royriojas](https://github.com/royriojas), 11/08/2015 17:27:37
+
+    
 ## v0.1.2
 - **Features**
   - Add a logger module as a handy way to create a logger without setting coloredOutput to true - [f7684b8]( https://github.com/royriojas/clix-logger/commit/f7684b8 ), [royriojas](https://github.com/royriojas), 11/08/2015 10:07:02
