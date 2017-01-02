@@ -3,6 +3,7 @@ module.exports = function ( options ) {
   var chalk = require( 'chalk' );
   var extend = require( 'extend' );
   var util = require( 'util' );
+  var getTime = require( './lib/get-time' );
 
   var inspect = function ( arg ) {
     if ( typeof arg !== 'object' && !Array.isArray( arg ) ) {
@@ -12,6 +13,7 @@ module.exports = function ( options ) {
   };
 
   var opts = extend( {
+    appendTime: true,
     coloredOutput: false,
     methods: {
       ok: {
@@ -41,6 +43,7 @@ module.exports = function ( options ) {
       },
       print: {
         muteable: false,
+        noAppendTime: true,
         color: 'gray',
         token: null
       },
@@ -59,17 +62,18 @@ module.exports = function ( options ) {
       }
       var args = [ ].slice.call( arguments );
 
+      if ( opts.appendTime && !entry.noAppendTime ) {
+        args.unshift( '[' + getTime() + ']' );
+      }
+
       if ( entry.token ) {
-        // if (opts.showDate) {
-        //   args.unshift( moment().format(opts.dateFormat) + chalk.gray(' '+ chalk.gray('|')));
-        // }
         args.unshift( entry.token );
       }
 
       args = args.map( function ( arg ) {
         return opts.coloredOutput ? chalk[ entry.color ]( inspect( arg ) ) : inspect( arg );
       } );
-      //var logFn = 'log';
+
       var logFn = (key !== 'error') ? 'log' : 'error';
 
       console[ logFn ].apply( console, args );

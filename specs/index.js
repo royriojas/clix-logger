@@ -5,6 +5,9 @@ describe( 'clix-logger', function () {
     var lines = [ ];
 
     var l = proxyquire( '../', {
+      './lib/get-time': function () {
+        return '02:45:22';
+      },
       './lib/console': {
         log: function () {
           var args = [ ].slice.call( arguments );
@@ -45,12 +48,12 @@ describe( 'clix-logger', function () {
       coloredOutput: false
     }, [ 1, 2, 3 ] );
 
-    require( 'fs' ).writeFileSync( './specs/fixtures/complex-objects.txt', lines.join( '\n' ) );
-    // var expected = require( 'fs' ).readFileSync( './specs/fixtures/complex-objects.txt', {
-    //   encoding: 'utf8'
-    // } );
+    // require( 'fs' ).writeFileSync( './specs/fixtures/complex-objects.txt', lines.join( '\n' ) );
+    var expected = require( 'fs' ).readFileSync( './specs/fixtures/complex-objects.txt', {
+      encoding: 'utf8'
+    } );
 
-    //expect( lines.join( '\n' ) ).to.equal( expected );
+    expect( lines.join( '\n' ) ).to.equal( expected );
 
   } );
 
@@ -69,7 +72,7 @@ describe( 'clix-logger', function () {
           lines.push( args.join( ' ' ) );
         }
       }
-    } )( { coloredOutput: false } );
+    } )( { coloredOutput: false, appendTime: false } );
 
     l.ok( 'a', 'simple', 'message', 'of', 'type', 'ok' );
     l.subtle( 'a', 'simple', 'message', 'of', 'type', 'subtle' );
@@ -108,7 +111,7 @@ describe( 'clix-logger', function () {
           lines.push( args.join( ' ' ) );
         }
       }
-    } )( { coloredOutput: false, quiet: true } );
+    } )( { coloredOutput: false, quiet: true, appendTime: false } );
 
     l.ok( 'a', 'simple', 'message', 'of', 'type', 'ok' );
     l.subtle( 'a', 'simple', 'message', 'of', 'type', 'subtle' );
@@ -145,7 +148,7 @@ describe( 'clix-logger', function () {
           lines.push( args.join( ' ' ) );
         }
       }
-    } )( { coloredOutput: true } );
+    } )( { coloredOutput: true, appendTime: false } );
 
     l.ok( 'a', 'simple', 'message', 'of', 'type', 'ok' );
     l.subtle( 'a', 'simple', 'message', 'of', 'type', 'subtle' );
@@ -155,12 +158,12 @@ describe( 'clix-logger', function () {
     l.success( 'a', 'simple', 'message', 'of', 'type', 'success' );
     l.warn( 'a', 'simple', 'message', 'of', 'type', 'warn' );
 
-    require( 'fs' ).writeFileSync( './specs/fixtures/colored-output.txt', lines.join( '\n' ) );
-    // var expected = require( 'fs' ).readFileSync( './specs/fixtures/colored-output.txt', {
-    //   encoding: 'utf8'
-    // } );
+    // require( 'fs' ).writeFileSync( './specs/fixtures/colored-output.txt', lines.join( '\n' ) );
+    var expected = require( 'fs' ).readFileSync( './specs/fixtures/colored-output.txt', {
+      encoding: 'utf8'
+    } );
 
-    //expect( lines.join( '\n' ) ).to.equal( expected );
+    expect( lines.join( '\n' ) ).to.equal( expected );
 
   } );
 } );
