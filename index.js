@@ -12,7 +12,7 @@ module.exports = function ( options ) {
     return util.inspect( arg, { depth: 3 } );
   };
 
-  var opts = extend( {
+  var opts = extend(true, {
     appendTime: true,
     coloredOutput: false,
     methods: {
