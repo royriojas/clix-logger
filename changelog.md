@@ -1,5 +1,17 @@
 
 # clix-logger - Changelog
+## v1.0.1
+- **Refactoring**
+  - Beautify index - [b4eac63]( https://github.com/royriojas/clix-logger/commit/b4eac63 ), [Roy Riojas](https://github.com/Roy Riojas), 09/08/2018 01:57:19
+
+    
+  - Upgrade moment dep to avoid vulnerability - [f056a6e]( https://github.com/royriojas/clix-logger/commit/f056a6e ), [Roy Riojas](https://github.com/Roy Riojas), 09/08/2018 01:56:32
+
+    
+- **Other changes**
+  - Deep extend the options argument - [7036996]( https://github.com/royriojas/clix-logger/commit/7036996 ), [Merott Movahedi](https://github.com/Merott Movahedi), 02/11/2017 12:59:29
+
+    Without a deep extend, trying to override just one log method will override everything.
 ## v1.0.0
 - **Features**
   - Add time to logs - [66a47be]( https://github.com/royriojas/clix-logger/commit/66a47be ), [Roy Riojas](https://github.com/Roy Riojas), 02/01/2017 02:49:51
