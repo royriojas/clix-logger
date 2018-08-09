@@ -1,5 +1,10 @@
 
 # clix-logger - Changelog
+## v1.0.2
+- **Refactoring**
+  - Upgrade changelogx - [d0581e6]( https://github.com/royriojas/clix-logger/commit/d0581e6 ), [Roy Riojas](https://github.com/Roy Riojas), 09/08/2018 01:58:35
+
+    
 ## v1.0.1
 - **Refactoring**
   - Beautify index - [b4eac63]( https://github.com/royriojas/clix-logger/commit/b4eac63 ), [Roy Riojas](https://github.com/Roy Riojas), 09/08/2018 01:57:19
