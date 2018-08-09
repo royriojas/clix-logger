@@ -1,6 +1,6 @@
 {
   "name": "clix-logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Another console log wrapper with colored support and icons",
   "main": "index.js",
   "scripts": {
