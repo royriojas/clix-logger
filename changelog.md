@@ -1,5 +1,10 @@
 
 # clix-logger - Changelog
+## v2.0.0
+- **Refactoring**
+  - remove legacy libraries - [445fdfb]( https://github.com/royriojas/clix-logger/commit/445fdfb ), [Roy Riojas](https://github.com/Roy Riojas), 09/07/2019 13:59:37
+
+    
 ## v1.0.2
 - **Refactoring**
   - Upgrade changelogx - [d0581e6]( https://github.com/royriojas/clix-logger/commit/d0581e6 ), [Roy Riojas](https://github.com/Roy Riojas), 09/08/2018 01:58:35
