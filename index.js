@@ -1,92 +1,88 @@
-module.exports = function ( options ) {
-  var console = require( './lib/console' );
-  var chalk = require( 'chalk' );
-  var extend = require( 'extend' );
-  var util = require( 'util' );
-  var getTime = require( './lib/get-time' );
+module.exports = options => {
+  const console = require('./lib/console');
+  const chalk = require('chalk');
+  const util = require('util');
+  const getTime = require('./lib/get-time');
 
-  var inspect = function ( arg ) {
-    if ( typeof arg !== 'object' && !Array.isArray( arg ) ) {
+  const inspect = arg => {
+    if (typeof arg !== 'object' && !Array.isArray(arg)) {
       return arg;
     }
-    return util.inspect( arg, { depth: 3 } );
+    return util.inspect(arg, { depth: 3 });
   };
 
-  var opts = extend( true, {
+  const opts = {
     appendTime: true,
     coloredOutput: false,
     methods: {
       ok: {
         muteable: false,
         color: 'yellow',
-        token: ' ✔ ︎'
+        token: ' ✔ ︎',
       },
       subtle: {
         muteable: true,
         color: 'gray',
-        token: ' ▸ '
+        token: ' ▸ ',
       },
       error: {
         muteable: false,
         color: 'red',
-        token: ' ✘ '
+        token: ' ✘ ',
       },
       log: {
         muteable: true,
         color: 'white',
-        token: ' ℹ︎ '
+        token: ' ℹ︎ ',
       },
       warn: {
         muteable: false,
         color: 'magenta',
-        token: ' ⚠︎ '
+        token: ' ⚠︎ ',
       },
       print: {
         muteable: false,
         noAppendTime: true,
         color: 'gray',
-        token: null
+        token: null,
       },
       success: {
         muteable: false,
         color: 'green',
-        token: ' ✓ ︎'
-      }
-    }
-  }, options );
+        token: ' ✓ ︎',
+      },
+    },
+    ...options,
+  };
 
-  var defineMethod = function defineMethod( entry, key ) {
-    return function logMethod() {
-      if ( opts.quiet && entry.muteable ) {
+  const defineMethod = function defineMethod(entry, key) {
+    return function logMethod(...args) {
+      if (opts.quiet && entry.muteable) {
         return;
       }
-      var args = [ ].slice.call( arguments );
 
-      if ( opts.appendTime && !entry.noAppendTime ) {
-        args.unshift( '[' + getTime() + ']' );
+      if (opts.appendTime && !entry.noAppendTime) {
+        args.unshift(`[${getTime()}]`);
       }
 
-      if ( entry.token ) {
-        args.unshift( entry.token );
+      if (entry.token) {
+        args.unshift(entry.token);
       }
 
-      args = args.map( function ( arg ) {
-        return opts.coloredOutput ? chalk[ entry.color ]( inspect( arg ) ) : inspect( arg );
-      } );
+      args = args.map(arg => (opts.coloredOutput ? chalk[entry.color](inspect(arg)) : inspect(arg)));
 
-      var logFn = (key !== 'error') ? 'log' : 'error';
+      const logFn = key !== 'error' ? 'log' : 'error';
 
-      console[ logFn ].apply( console, args );
-
+      console[logFn](...args);
     };
   };
 
-  var methods = opts.methods;
+  const methods = opts.methods;
 
-  var log = Object.keys( methods ).reduce( function ( seq, key ) {
-    seq[ key ] = defineMethod( methods[ key ], key );
+  const log = Object.keys(methods).reduce((seq, key) => {
+    seq[key] = defineMethod(methods[key], key);
     return seq;
-  }, { } );
+  }, {});
 
   return log;
 };

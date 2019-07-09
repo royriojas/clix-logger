@@ -1,1 +1,1 @@
-module.exports = require( './index' )( { coloredOutput: true } );
+module.exports = require('./index')({ coloredOutput: true });
